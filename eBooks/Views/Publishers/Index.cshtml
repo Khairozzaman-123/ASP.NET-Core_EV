@@ -1,0 +1,40 @@
+﻿@model IEnumerable<eBooks.Models.Publisher>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Publisher List</h1>
+
+<p class="d-flex justify-content-end">
+    <a asp-action="Create" class="btn btn-success">Create New</a>
+</p>
+<table class="table table-hover table-striped table-sm">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PublisherName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PublisherAddress)
+            </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PublisherName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PublisherAddress)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PublisherId" class="btn btn-primary">Edit</a>
+                <a asp-action="Delete" asp-route-id="@item.PublisherId" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
